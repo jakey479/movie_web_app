@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Movies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user_movies_data.css') }}">
+    <script src="{{ url_for('static', filename='display_add_movie_form.js') }}"></script>
+</head>
+<body>
+    <h1>User Movies</h1>
+    <button class="add_movie">Add movies</button>
+    <form method="post" class = "add_movie_form" id="{{ user_id }}" action="{{ url_for('add_movie_to_user_database', user_id=user_id) }}">
+        <label for="title">Title</label>
+        <br>
+        <input type="text" name="title" value="{{ request.form['title'] }}">
+        </input>
+        <br>
+        <label for="director">Director</label>
+        <br>
+        <input type="text" name="director" value="{{ request.form['director'] }}"></input>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    {% for movie_data in user_movies.values() %}
+        <div class="movie-container" data-movie-id="{{ movie_id }}">
+            <ul>
+                {% for key, value in movie_data.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</body>
+</html>
