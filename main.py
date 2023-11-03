@@ -16,7 +16,6 @@ omdbp_api_response_formatter = OMDBApiFormatter()
 MOVIE_DATABASE = crud_movie_database_json.return_movie_database()
 
 
-
 @app.route('/return_users')
 def movie_database_users():
     user_names = crud_movie_database_json.return_users(movie_database=MOVIE_DATABASE)
@@ -30,14 +29,19 @@ def user_movie_data(user_id):
         )
         return render_template('user_movies_data.html', user_movies=user_movies, user_id=user_id)
 
-@app.route('/add_user')
+@app.route('/add_user', methods=["GET", "POST"])
 def add_user_to_database():
-    # displays a form to add a user
+    user_name = request.form['user_name']
+    crud_movie_database_json.add_new_user(
+        movie_database=MOVIE_DATABASE,
+        username=user_name
+        )
+    return redirect(url_for('movie_database_users'))
+    
 
 @app.route('/users/add_movie/<user_id>', methods=['GET', 'POST'])
 def add_movie_to_user_database(user_id):
     title = request.form['title']
-    release_date = request.form['release_date']
     director = request.form['director']
     user_id = user_id
     api_response = omdbp_api_handler.return_api_response(movie_title=title)

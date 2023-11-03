@@ -8,5 +8,23 @@
                 "director": "Martin Scorsese"
             }
         }
+    },
+    "c6219ccb05c74c3ba853bbe41ec7543c": {
+        "user_name": "JennaBanenna",
+        "user_movies": {}
+    },
+    "cc8dfeb75ffe4fdbb474b1f526fb5e62": {
+        "user_name": "JennaBanenna",
+        "user_movies": {}
+    },
+    "ea5bdfde52c14997b29b1200bbabdb68": {
+        "user_name": "FrankyLikez2Wanky",
+        "user_movies": {
+            "c0b98bfed5c14e62bc512e5f3dacc4e3": {
+                "title": "Goodfellas",
+                "release_date": "21 Sep 1990",
+                "director": "Martin Scorsese"
+            }
+        }
     }
 }
