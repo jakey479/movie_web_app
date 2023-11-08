@@ -14,16 +14,26 @@
         <h1>WMD USERS</h1>
         <button class="add_movie">Add user</button>
         <form method="post" class = "add_user_form" action="{{ url_for('add_user_to_database') }}">
-            <label for="user_name">Username</label>
+            <label for="username">Username</label>
             <br>
-            <input type="text" name="user_name" value="{{ request.form['user_name'] }}">
+            <input type="text" name="username">
             </input>
+            <br>
+            <label for="password">password</label>
+            <br>
+            <input type="text" name="password">
+            </input>
+            <br>
             <button type="submit">Submit</button>
         </form>
         <ul>
+            {% if user_names %}
             {% for user_name in user_names %}
-                <li><a id="{{ user_name[0] }}" href="{{ url_for('user_movie_data', user_id=user_name[0]) }}">{{ user_name[1] }}</a></li>
+                <li><a href="{{ url_for('user_login', user_id=user_name[0]) }}">{{ user_name[1] }}</a></li>
             {% endfor %}
+        {% else %}
+            <li>No users found.</li>
+        {% endif %}
         </ul>
     </div>
 </body>

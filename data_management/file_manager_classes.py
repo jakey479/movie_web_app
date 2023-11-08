@@ -1,7 +1,6 @@
-from .file_manager_interface import FileManagerInterface
+from .class_interfaces import FileManagerInterface
 import json
 import os
-
 
 
 class JsonFileManager(FileManagerInterface):        

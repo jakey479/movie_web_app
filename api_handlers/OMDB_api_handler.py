@@ -16,7 +16,7 @@ class OMDBApiHandler:
         api_response = requests.get(self.api_key + movie_title)
         return api_response
 
-    def convert_api_json_response_to_python_object(self, api_response):
+    def convert_json_api_dict_to_python_dict(self, api_response) -> dict:
         python_object = api_response.json()
         return python_object
 

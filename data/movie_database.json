@@ -1,28 +1,16 @@
 {
-    "d5d397532dbe45f6a647fec1583c6996": {
-        "user_name": "Jacob Torres",
-        "user_movies": {
-            "07495c4715b14731aa6db118302bee65": {
+    "766962ebdd754f06bad0b5cbc82cc940": {
+        "username": "jakey479",
+        "password": "scrypt:32768:8:1$nay9VrP63c2K9J3j$dbd0c22f7bc9abe5451da79af58ae654d935ce33585d23875eab4ab2bacf88110dd66670a731b56f4a2ef4f534f6d6021fe1a4dab420eb63615c07dddd30825b",
+        "movies": {
+            "b0f95256b1154ec5a0c521b334392bef": {
                 "title": "The Departed",
-                "release_date": "06 Oct 2006",
+                "release date": "06 Oct 2006",
                 "director": "Martin Scorsese"
-            }
-        }
-    },
-    "c6219ccb05c74c3ba853bbe41ec7543c": {
-        "user_name": "JennaBanenna",
-        "user_movies": {}
-    },
-    "cc8dfeb75ffe4fdbb474b1f526fb5e62": {
-        "user_name": "JennaBanenna",
-        "user_movies": {}
-    },
-    "ea5bdfde52c14997b29b1200bbabdb68": {
-        "user_name": "FrankyLikez2Wanky",
-        "user_movies": {
-            "c0b98bfed5c14e62bc512e5f3dacc4e3": {
+            },
+            "d9fdaa666bab4fa392b7712328bab9c6": {
                 "title": "Goodfellas",
-                "release_date": "21 Sep 1990",
+                "release date": "21 Sep 1990",
                 "director": "Martin Scorsese"
             }
         }

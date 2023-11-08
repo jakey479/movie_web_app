@@ -7,29 +7,43 @@
     <title>User Movies</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='user_movies_data.css') }}">
     <script src="{{ url_for('static', filename='display_add_movie_form.js') }}"></script>
+    <script src="{{ url_for('static', filename='display_update_user_movie_form.js') }}"></script>
 </head>
 <body>
     <h1>User Movies</h1>
-    <button class="add_movie">Add movies</button>
-    <form method="post" class = "add_movie_form" id="{{ user_id }}" action="{{ url_for('add_movie_to_user_database', user_id=user_id) }}">
+    <button class="add_movie">add movie</button>
+    <a href="{{ url_for('movie_database_users') }}">
+        <button class="return_user_profiles">return to user profiles</button>
+    </a>
+    <form method="post" class = "add_movie_form" action="{{ url_for('add_movie_to_user_database') }}">
         <label for="title">Title</label>
         <br>
         <input type="text" name="title" value="{{ request.form['title'] }}">
         </input>
         <br>
-        <label for="director">Director</label>
-        <br>
-        <input type="text" name="director" value="{{ request.form['director'] }}"></input>
-        <br>
-        <button type="submit">Submit</button>
+        <button type="submit">submit</button>
     </form>
-    {% for movie_data in user_movies.values() %}
-        <div class="movie-container" data-movie-id="{{ movie_id }}">
+    {% for movie_id, movie_data in user_movies.items() %}
+        <div class="movie-container" id="{{ movie_id }}">
             <ul>
                 {% for key, value in movie_data.items() %}
-                    <li>{{ key }}: {{ value }}</li>
+                    <li>{{ key }}: {{ value }}</li> 
                 {% endfor %}
-                <button>Delete movie</button>
+                <button class="edit_movie">edit movie</button>
+                <form method="post" class="update_movie_form" action="{{ url_for('update_movie', movie_id=movie_id) }}" style="display:none;">
+                    {% for key, value in movie_data.items() %}
+                    <br>
+                    <label for="{{ key }}">{{ key }}</label>
+                    <br>
+                    <input type="text" name="{{ key }}" value="{{ value }}"></input>
+                    <br>
+                    {% endfor %}
+                    <br>
+                    <button type="submit">update movie</button>
+                </form>
+                <a href="{{ url_for('delete_user_movie', movie_id=movie_id) }}">
+                    <button>delete movie</button>
+                </a>
             </ul>
         </div>
     {% endfor %}
