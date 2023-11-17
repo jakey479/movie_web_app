@@ -9,9 +9,9 @@ class OMDBApiHandler:
 
     def return_api_response(self, movie_title: str) -> Response:
         """
-        return an api response based on a query parameter
-        :api_param movie_name:
-        :return:
+        return an api response from the OMDB api based on a title query parameter
+        :movie_title: the name of a movie existing in the api
+        :return: an api response if the movie exists in the api
         """
         api_response = requests.get(self.api_key + movie_title)
         return api_response

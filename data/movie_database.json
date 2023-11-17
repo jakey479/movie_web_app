@@ -1,18 +1,21 @@
 {
-    "766962ebdd754f06bad0b5cbc82cc940": {
-        "username": "jakey479",
-        "password": "scrypt:32768:8:1$nay9VrP63c2K9J3j$dbd0c22f7bc9abe5451da79af58ae654d935ce33585d23875eab4ab2bacf88110dd66670a731b56f4a2ef4f534f6d6021fe1a4dab420eb63615c07dddd30825b",
-        "movies": {
-            "b0f95256b1154ec5a0c521b334392bef": {
-                "title": "The Departed",
-                "release date": "06 Oct 2006",
-                "director": "Martin Scorsese"
-            },
-            "d9fdaa666bab4fa392b7712328bab9c6": {
-                "title": "Goodfellas",
-                "release date": "21 Sep 1990",
-                "director": "Martin Scorsese"
+        "jakey479": {
+            "password": "scrypt:32768:8:1$rqIB9f3lgf5uFnqN$6001dda5251c9c15f7495358c1a47529134c957e188608fa38a42522db5c04ddbd720a4c29e4db6245e22eb0fcbb005e428bb06bd9add000f0f574275437da28",
+            "user_data": {
+                "user_movies": {
+                    "23523543": {
+                        "title": "a movie",
+                        "director": "a director",
+                        "release_data": "a date"
+                    }
+                },
+                "user_address": "118 tyndall ave"
+            } 
+        },
+        "jakey579": {
+            "password": "scrypt:32768:8:1$DSXBxKbIW9tqqVi1$b1b4b280af9ec9e55d0c58a0132438d29baefea14fb4e618b2b5cabfea209c084da9a0b3fc5e8b482ee6ba48b58d18cea4d4a69428e35c78107beff8c012e349",
+            "user_data": {
+                "user_movies": {}
             }
         }
-    }
 }

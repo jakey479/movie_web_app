@@ -1,4 +1,4 @@
-class OMDBApiFormatter():
+class OMDBApiResponseFormatter():
 
     def return_formatted_movie_dictionary(self, movie_dictionary: dict):
         movie_dictionary = {

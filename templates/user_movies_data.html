@@ -10,10 +10,10 @@
     <script src="{{ url_for('static', filename='display_update_user_movie_form.js') }}"></script>
 </head>
 <body>
-    <h1>User Movies</h1>
+    <h1>{{ username }}'s Movies</h1>
     <button class="add_movie">add movie</button>
-    <a href="{{ url_for('movie_database_users') }}">
-        <button class="return_user_profiles">return to user profiles</button>
+    <a href="{{ url_for('user_login') }}">
+        <button class="return_user_profiles">log out</button>
     </a>
     <form method="post" class = "add_movie_form" action="{{ url_for('add_movie_to_user_database') }}">
         <label for="title">Title</label>
