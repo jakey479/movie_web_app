@@ -1,13 +1,13 @@
 from abc import ABC, abstractmethod
 
-class CrudUserMovieDataInterface(ABC):
+class CrudUserDataInterface(ABC):
 
     def __init__(self, user_movies_dict: dict) -> None:
         self.user_movies = user_movies_dict
         
 
     @abstractmethod
-    def initialize_file() -> None: 
+    def initialize_file(self) -> None: 
         pass
 
     @abstractmethod
@@ -18,28 +18,8 @@ class CrudUserMovieDataInterface(ABC):
     def add_movie(self) -> None: 
         pass
 
-    # @abstractmethod
-    # def add_movie_review():
-    #     pass
-
-    # @abstractmethod
-    # def add_movie_rating():
-    #     pass    
-
     @abstractmethod
     def return_user_movies(self) -> dict: 
-        pass
-
-    @abstractmethod
-    def return_username(self):
-        pass
-
-    @abstractmethod
-    def return_password(self):
-        pass
-
-    @abstractmethod
-    def return_user_movie(self): 
         pass
 
     @abstractmethod

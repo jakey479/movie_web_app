@@ -17,5 +17,17 @@
         <br>
         <input type="submit" value="Login">
     </form>
+    <h2>Register</h2>
+    <form method="POST" action="{{ url_for('add_user') }}">
+        <label for="new_username">Username:</label>
+        <br>
+        <input type="text" name="username" id="new_username">
+        <br>
+        <label for="new_password">Password:</label>
+        <br>
+        <input type="password" name="password" id="new_password">
+        <br>
+        <input type="submit" value="Register">
+    </form>
 </body>
 </html>

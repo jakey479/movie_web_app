@@ -6,7 +6,7 @@ import os
 class JsonFileManager(FileManagerInterface):   
 
     def __init__(self) -> None:
-        self.filepath = os.path.join('movie_web_app', 'data', 'movie_database.json')
+        self.filepath = os.path.join('data', 'movie_database.json')
 
     def read_file(self):
         with open(self.filepath) as fileobj:
