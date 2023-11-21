@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_cors import CORS
 from uuid import uuid4
 from data_management.file_manager_classes import JsonFileManager
@@ -22,33 +22,35 @@ crud_user_data = JsonCrudUserData(
 @app.route('/', methods=["GET", "POST"])
 def user_login():
     if request.method == "GET":
-        if 'username' in session:
-            del session['username']
         return render_template('user_login.html')
     if request.method == "POST":
         password_attempt = request.form['password']
         username_attempt = request.form['username']
-        is_valid_login = login_manager.is_valid_login(
+        if login_manager.is_valid_login(
             username_attempt=username_attempt,
             password_attempt=password_attempt
-        )
-        if is_valid_login:
+        ):
             session['username'] = username_attempt
             return redirect(url_for('display_user_movies'))
-        return render_template('user_login.html')
+        return redirect(url_for('user_login'))
     
 @app.route('/add_user', methods=["POST"])
 def add_user():
     username = request.form['username']
     password = request.form['password']
+    if username in crud_user_data.users_database:
+        flash('Username already taken') 
+        return render_template('user_login.html')
     crud_user_data.add_user(
         username=username,
         password=password
         )
-    return redirect(url_for('movie_database_users'))
+    session['username'] = username
+    return redirect(url_for('display_user_movies'))
     
 @app.route('/display_user_movies')
 def display_user_movies():
+    print(session.get('username'))
     return render_template(
         'user_movies_data.html', 
         user_movies=crud_user_data.return_user_movies(username=session.get('username')),
@@ -67,6 +69,8 @@ def add_movie_to_user_database():
             movie_data=formatted_movie_dictionary
             )
         return redirect(url_for('display_user_movies'))
+    else:
+        return render_template('movie_not_available.html')
     
 @app.route('/users/update_movie/<movie_id>', methods=["POST"])
 def update_movie(movie_id):

@@ -17,10 +17,11 @@ class OMDBApiHandler:
         return api_response
 
     def is_api_response_valid(self, api_response: Response) -> bool:
-        if api_response.status_code == 200:
-            return True
-        elif api_response.status_code == 404:
+        if self.convert_api_response_to_python_dict(
+            api_response=api_response
+            )["Response"] == "False": 
             return False
+        return True
 
     def convert_api_response_to_python_dict(self, api_response: Response) -> dict:
         movie_dictionary = api_response.json()

@@ -1,4 +1,4 @@
-from . import helpers
+from werkzeug.security import check_password_hash
 
 class LoginManager():
     def __init__(self, user_database: dict) -> None:
@@ -13,11 +13,11 @@ class LoginManager():
         return self.user_database[username]["password"]
     
     def _is_valid_password(self, password: str, password_attempt: str) -> bool:
-        return helpers.is_valid_password(
-            hashed_password=password, 
-            password_attempt=password_attempt
+        return check_password_hash(
+            pwhash=password, 
+            password=password_attempt
             )
-    
+
     def is_valid_login(
             self, 
             username_attempt: str, 
@@ -26,11 +26,9 @@ class LoginManager():
         if self._is_valid_username(
             username_attempt=username_attempt
             ):
-            valid_password = self._return_user_password(
-                username=username_attempt)
-            if self._is_valid_password(
+            valid_password = self._return_user_password(username=username_attempt)
+            return self._is_valid_password(
                 password=valid_password, 
-                password_attempt=password_attempt,
-                ):
-                return True
+                password_attempt=password_attempt
+                )
         return False

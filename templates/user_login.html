@@ -3,31 +3,43 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user_login.css') }}">
 </head>
 <body>
     <h2>Login</h2>
     <form method="POST" action="{{ url_for('user_login') }}">
         <label for="username">Username:</label>
         <br>
-        <input type="text" name="username">
+        <input type="text" name="username" required>
         <br>
         <label for="password">Password:</label>
         <br>
-        <input type="text" name="password">
+        <input type="password" name="password" required>
         <br>
         <input type="submit" value="Login">
     </form>
     <h2>Register</h2>
-    <form method="POST" action="{{ url_for('add_user') }}">
+    <form method="POST" action="{{ url_for('add_user') }}" onsubmit="return validatePassword()">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <p class=flashes>{{ messages[0] }}</p>
+        {% endif %}
+    {% endwith %}
         <label for="new_username">Username:</label>
         <br>
-        <input type="text" name="username" id="new_username">
+        <input type="text" name="username" id="new_username" required>
         <br>
         <label for="new_password">Password:</label>
         <br>
-        <input type="password" name="password" id="new_password">
+        <input type="password" name="password" id="new_password" required>
+        <br>
+        <label for="confirm_password">Confirm Password:</label>
+        <br>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+        <span id="passwordMatchIndicator"></span>
         <br>
         <input type="submit" value="Register">
     </form>
+    <script type="text/javascript" src="{{ url_for('static', filename='validate_new_password.js') }}"></script>
 </body>
 </html>
