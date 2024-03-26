@@ -30,8 +30,10 @@ class OMDBApiHandler:
     def return_formatted_movie_dictionary(self, movie_dictionary: dict) -> dict:
         movie_dictionary = {
             "title": movie_dictionary['Title'],
+            "director": movie_dictionary["Director"],
+            "cast": movie_dictionary["Actors"],
             "release date": movie_dictionary["Released"],
-            "director": movie_dictionary["Director"]
+            "plot": movie_dictionary["Plot"],
         }
         return movie_dictionary
     
