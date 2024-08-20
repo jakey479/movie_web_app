@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav_bar_base.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-bar">
+            <a class="brand-logo" href="{{ url_for('login') }}">Movie Blog, Bitch</a>
+            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="#"></a>Sign Up
+        </div>
+    </nav>
+    <div class="notifications">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div> 
+    {% block content %}{% endblock %}
+</body>
+</html>

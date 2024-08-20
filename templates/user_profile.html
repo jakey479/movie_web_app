@@ -1,0 +1,28 @@
+{% extends "authenticated_base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+<h1>Hello, {{ user.username }}!</h1>
+{% for post in posts %}
+<div>
+    <form>
+        
+    </form>
+    <p>
+        {{ post.author.username }} says: <b>{{ post.body }}</b>
+    </p>
+</div>
+{% endfor %}
+{% endblock %}

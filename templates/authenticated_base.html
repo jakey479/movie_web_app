@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav_bar_base.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-bar">
+            <a class="brand-logo" href="{{ url_for('user_profile') }}">Winerd</a>
+            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="#">User Info</a>
+            <a class="nav-link" href="#">Messages</a>
+            <a class="nav-link" href="#">Logout</a>
+        </div>
+    </nav> 
+    {% block content %}{% endblock %}
+</body>
+</html>
